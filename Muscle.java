@@ -1,7 +1,9 @@
 
 /**
- * The user will select a specific muscle hit making reference to the MuscleGroup enum,
- * each muscle will be related to a specific MuscleGroup e.g. biceps -> arms, etc
+ * The user will select a specific muscle hit making reference to the
+ * MuscleGroup enum,
+ * each muscle will be related to a specific MuscleGroup e.g. biceps -> arms,
+ * etc
  */
 
 public enum Muscle {
@@ -32,7 +34,7 @@ public enum Muscle {
     ABS(MuscleGroup.CORE),
     OBLIQUES(MuscleGroup.CORE),
     OTHER_CORE(MuscleGroup.CORE),
-    OTHER(MuscleGroup.OTHER),
+    OTHER(MuscleGroup.OTHER);
 
     private final MuscleGroup muscleGroup;
 
