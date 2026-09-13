@@ -4,31 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Will list out the options for the user to select from when logging a new exercise
- * it'll ask the user to input the exercise name, the muscle group and specific muscle hit, the weight lifted, the no of reps and sets
+ * Will list out the options for the user to select from when logging a new PR
+ * it'll ask the user to input the PR name, the muscle group and specific muscle hit, the weight lifted, the no of reps
  * it'll log the date automatically using LocalDate
  */
 
-public class ExerciseMenu {
+public class PRMenu {
 
     private final Scanner scanner;
-    private String exerciseDetails;
+    private String PRDetails;
     private String exerciseName;
     private int weightLifted;
     private int noOfReps;
-    private int noOfSets;
 
-    public ExerciseMenu(Scanner scanner) {
+    public PRMenu(Scanner scanner) {
         this.scanner = scanner;
     }
 
     /**
-     * Logs a new exercise by prompting the user for an input and storing the details in a string
+     * Logs a new PR by prompting the user for an input and storing the details in a string
      * Uses MuscleGroup and Muscle classes to get the muscles hit
      * 
-     * @return exerciseDetails
+     * @return PRDetails
      */
-    public String logNewExercise() {
+    public String logNewPR() {
 
         System.out.println("Please enter the muscle group targeted: ");
         MuscleGroup chosenMuscleGroup = inputMuscleGroup();
@@ -40,11 +39,9 @@ public class ExerciseMenu {
         weightLifted = Integer.parseInt(scanner.nextLine().trim());
         System.out.print("Please enter the number of reps achieved: ");
         noOfReps = Integer.parseInt(scanner.nextLine().trim());
-        System.out.print("Please enter the number of sets completed: ");
-        noOfSets = Integer.parseInt(scanner.nextLine().trim());
 
-        exerciseDetails = "Muscle Group: " + chosenMuscleGroup + "\nSpecific Muscle: " + chosenMuscle + "\nExercise Name: " + exerciseName + "\nWeightLifted: " + weightLifted + "kg\nNumber of Reps: " + noOfReps + "\nNumber of Sets: " + noOfSets + "\nDate Logged: " + LocalDate.now();
-        return exerciseDetails;
+        PRDetails = "Muscle Group: " + chosenMuscleGroup + "\nSpecific Muscle: " + chosenMuscle + "\nExercise Name: " + exerciseName + "\nWeightLifted: " + weightLifted + "kg\nNumber of Reps: " + noOfReps + "\nDate Logged: " + LocalDate.now();
+        return PRDetails;
     }
 
     private MuscleGroup inputMuscleGroup() {
@@ -83,5 +80,5 @@ public class ExerciseMenu {
 
         return choice;
     }
-
+    
 }

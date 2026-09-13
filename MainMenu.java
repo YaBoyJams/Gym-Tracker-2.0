@@ -57,15 +57,16 @@ public class MainMenu {
      */
 
     public void displayMenus(int userChoice) {
-        ExerciseMenu exerciseMenu = new ExerciseMenu(scanner);
         switch(userChoice) {
         case 1:
+            ExerciseMenu exerciseMenu = new ExerciseMenu(scanner);
             String exerciseDetails = exerciseMenu.logNewExercise();
             System.out.println(exerciseDetails);
             break;
         case 2:
-            //Insert Code
-            System.out.println("Feature not yet implemented. Please select another option.");
+            PRMenu prMenu = new PRMenu(scanner);
+            String prDetails = prMenu.logNewPR();
+            System.out.println(prDetails);
             break;
         case 3:
             //Insert Code
