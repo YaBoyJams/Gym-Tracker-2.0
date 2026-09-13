@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class MainMenu {
 
+    // Method to create a scanner object
     private final Scanner scanner;
 
     public MainMenu(Scanner scanner) {
@@ -16,13 +17,21 @@ public class MainMenu {
     }
 
     // Varaible to store user input
-    int userChoice;
+    private int userChoice;
+    private boolean quit = false;
 
     /**
      * Displays the main menu to the user and prompts for an input
      * 
      * @return userChoice
      */
+    public void loopMainMenu() {
+        while (!quit) {
+            int choice = displayMainMenu();
+            displayMenus(choice);
+        }
+    }
+
     public int displayMainMenu() {
 
         // Displays the main menu
@@ -33,7 +42,7 @@ public class MainMenu {
         System.out.println("4. View Most Recent PR");
         System.out.println("5. Exit Program");
 
-        userChoice = scanner.nextInt();
+        userChoice = Integer.parseInt(scanner.nextLine().trim());
 
         // Check to see if the input is working
         System.out.println(userChoice);
@@ -48,22 +57,31 @@ public class MainMenu {
      */
 
     public void displayMenus(int userChoice) {
+        ExerciseMenu exerciseMenu = new ExerciseMenu(scanner);
         switch(userChoice) {
         case 1:
-            // Insert Code
+            String exerciseDetails = exerciseMenu.logNewExercise();
+            System.out.println(exerciseDetails);
             break;
         case 2:
             //Insert Code
+            System.out.println("Feature not yet implemented. Please select another option.");
             break;
         case 3:
             //Insert Code
+            System.out.println("Feature not yet implemented. Please select another option.");
+            break;
         case 4:
             //Insert Code
+            System.out.println("Feature not yet implemented. Please select another option.");
+            break;
         case 5:
             System.out.println("Exiting Program. Thanks for using the Gym Tracker!");
+            quit = true;
             break;
         default:
             System.out.println("Invalid input. Please try again.");
+            break;
     }
     }
 

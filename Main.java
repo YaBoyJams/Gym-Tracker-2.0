@@ -20,7 +20,6 @@ public class Main {
          * calls displayMenus() to display the user's desired menu
          */
         MainMenu mainMenu = new MainMenu(scanner);
-        int menuInput = mainMenu.displayMainMenu();
-        mainMenu.displayMenus(menuInput);
+        mainMenu.loopMainMenu();
     }
 }
