@@ -7,12 +7,12 @@
 
 public enum MuscleGroup {
 
-    ARMS, 
-    SHOULDERS, 
-    CHEST, 
-    BACK, 
-    LEGS, 
-    CORE, 
+    ARMS,
+    SHOULDERS,
+    CHEST,
+    BACK,
+    LEGS,
+    CORE,
     OTHER
 
 }

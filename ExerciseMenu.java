@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Will list out the options for the user to select from when logging a new exercise
- * it'll ask the user to input the exercise name, the muscle group and specific muscle hit, the weight lifted, the no of reps and sets
+ * Will list out the options for the user to select from when logging a new
+ * exercise
+ * it'll ask the user to input the exercise name, the muscle group and specific
+ * muscle hit, the weight lifted, the no of reps and sets
  * it'll log the date automatically using LocalDate
  */
 
@@ -23,11 +25,14 @@ public class ExerciseMenu {
     }
 
     /**
-     * Logs a new exercise by prompting the user for an input and storing the details in a string
+     * Logs a new exercise by prompting the user for an input and storing the
+     * details in a string
      * Uses MuscleGroup and Muscle classes to get the muscles hit
      * 
      * @return exerciseDetails
      */
+
+    // Can be broken down into a constructor and specific methods with validation
     public String logNewExercise() {
 
         System.out.println("Please enter the muscle group targeted: ");
@@ -43,8 +48,20 @@ public class ExerciseMenu {
         System.out.print("Please enter the number of sets completed: ");
         noOfSets = Integer.parseInt(scanner.nextLine().trim());
 
-        exerciseDetails = "Muscle Group: " + chosenMuscleGroup + "\nSpecific Muscle: " + chosenMuscle + "\nExercise Name: " + exerciseName + "\nWeightLifted: " + weightLifted + "kg\nNumber of Reps: " + noOfReps + "\nNumber of Sets: " + noOfSets + "\nDate Logged: " + LocalDate.now();
-        return exerciseDetails;
+        exerciseDetails = "Muscle Group: " + chosenMuscleGroup + "\nSpecific Muscle: " + chosenMuscle
+                + "\nExercise Name: " + exerciseName + "\nWeightLifted: " + weightLifted + "kg\nNumber of Reps: "
+                + noOfReps + "\nNumber of Sets: " + noOfSets + "\nDate Logged: " + LocalDate.now();
+
+        System.out.println("Do you want to save this exercise? (Y/N)");
+        String saveChoice = scanner.nextLine().trim().toUpperCase();
+        if(saveChoice.equals("Y")){
+            FileManager fileManager = new FileManager();
+            fileManager.writeExerciseToFile(saveChoice);
+            return exerciseDetails;
+        }else{
+            System.out.println("Exercise not saved.");
+            return exerciseDetails;
+        }
     }
 
     private MuscleGroup inputMuscleGroup() {
@@ -59,7 +76,7 @@ public class ExerciseMenu {
         return muscleGroups[muscleGroupChoice - 1];
     }
 
-    private Muscle inputMuscle(MuscleGroup chosenMuscleGroup){
+    private Muscle inputMuscle(MuscleGroup chosenMuscleGroup) {
         List<Muscle> musclesInGroup = new ArrayList<>();
         for (Muscle muscle : Muscle.values()) {
             if (muscle.getMuscleGroup() == chosenMuscleGroup) {
@@ -75,8 +92,8 @@ public class ExerciseMenu {
         return musclesInGroup.get(choice - 1);
     }
 
-    private int readChoice(int choices){
-        // Validation to be added 
+    private int readChoice(int choices) {
+        // Validation to be added
         System.out.println("Please select an option: ");
 
         int choice = Integer.parseInt(scanner.nextLine().trim());
